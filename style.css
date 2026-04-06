@@ -1,0 +1,469 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #6366f1;
+    --border-color: #334155;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboard-stacked .preview-section {
+    order: 1;
+}
+
+.dashboard-stacked .controls-section {
+    order: 2;
+}
+
+/* Phase controls grid (3 columns) */
+.phases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.phase-column {
+    background: rgba(0, 0, 0, 0.15); /* Slight distinction logic */
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.general-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .phases-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+/* Light background override for preview card */
+.card.light-bg {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+
+.card.light-bg h2.dark-text {
+    color: #1e293b;
+    border-color: #e2e8f0;
+}
+
+.control-group {
+    margin-bottom: 1.25rem;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.control-group label.inline-label {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.section-divider {
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-divider h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 800;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--text-main);
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: rgba(15, 23, 42, 0.5);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--primary);
+}
+
+.value-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 65px;
+    text-align: center;
+}
+
+.preview-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.gauge-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Simulation Controls */
+.action-panel {
+    background-color: rgba(30, 41, 59, 0.4);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.description-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #4f46e5;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+.btn-secondary {
+    background-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background-color: #475569;
+}
+
+/* Linear Progress Component Styling */
+.progress-wrapper {
+    width: 100%;
+    margin-top: 3rem;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.linear-progress-container {
+    width: 100%;
+    background-color: var(--border-color);
+    /* You can change this via UI if needed, but #e2e8f0 is in the design */
+    border-radius: 9999px;
+    position: relative;
+    margin: 0 auto 2rem auto; /* Centered visually with space below */
+    padding: 3px;
+    /* Creates the inset capsule effect */
+    box-sizing: border-box;
+}
+
+/* Base style if light theme override used */
+.card.light-bg .linear-progress-container {
+    background-color: #e2e8f0;
+}
+
+.linear-progress-fill {
+    height: 100%;
+    border-radius: 9999px 0px 0px 9999px;
+    position: relative;
+    transition: width 0.3s linear, background-color 0.5s ease;
+}
+
+/* Markers (Milestones) Base Containers */
+.initial-container {
+    position: absolute;
+    top: 50%;
+    width: 1px;
+    z-index: 4;
+}
+
+.initial-line {
+    position: absolute;
+    top: -12px;
+    bottom: -12px;
+    width: 1px;
+    background-color: #94a3b8;
+    transform: translateX(-50%);
+}
+
+.initial-label {
+    position: absolute;
+    bottom: 16px;
+    /* Above the line */
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+/* Target Mark Styles */
+.target-container {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    z-index: 5;
+}
+
+.target-line {
+    position: absolute;
+    bottom: -12px;
+    right: 10px;
+    /* Extends slightly below the track */
+    height: 30px;
+    /* Extends upwards */
+    width: 2px;
+    background-color: #22c55e;
+    transform: translateX(-50%);
+}
+
+.target-flag {
+    position: absolute;
+    bottom: 24px;
+    left: -4px;
+    width: 21px;
+    height: 21px;
+    fill: currentColor;
+}
+
+.target-label {
+    position: absolute;
+    top: 14px;
+    /* Below the track */
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #22c55e;
+    white-space: nowrap;
+}
+
+/* Dynamic Floating Label (Current) */
+.dynamic-label-container {
+    position: absolute;
+    top: -1.5rem;
+    /* Positions above track */
+    right: 0;
+    transform: translateX(50%);
+    /* Centers over the leading edge */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.dynamic-text-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #111827;
+    white-space: nowrap;
+    margin-bottom: 2px;
+}
+
+.current-pointer {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #111827;
+    position: relative;
+}
+
+.current-pointer::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -0.5px;
+    width: 1.5px;
+    height: 18px;
+    /* Cuts down into the track */
+    background-color: #111827;
+}
+
+/* Timeout Warning UI (Left over if needed) */
+.timeout-alert {
+    display: none;
+}

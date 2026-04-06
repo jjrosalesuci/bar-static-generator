@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Gauges</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Generador de Gauges ✨</h1>
+            <p>Crea medidores interactivos con valores actuales y futuros</p>
+        </header>
+
+        <main class="dashboard dashboard-stacked">
+            <section class="preview-section">
+                <div class="card preview-card light-bg">
+                    <h2 class="dark-text">Vista Previa</h2>
+                    <div class="gauge-container" id="gauge-container">
+                        <!-- El gauge se inyectará aquí vía JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="card">
+                    <h2>Parámetros Visuales</h2>
+
+                    <div class="control-group" style="display: none;">
+                        <input type="hidden" id="gauge-style" value="linear">
+                    </div>
+
+                    <div class="phases-grid">
+                        <!-- Fase: Inicial -->
+                        <div class="phase-column">
+                            <div class="section-divider" style="margin-top: 0;">
+                                <h3>Fase: Inicial</h3>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-initial">Posición Inicial (%)</label>
+                                <div class="range-wrapper">
+                                    <input type="range" id="gauge-initial" min="0" max="100" value="25">
+                                    <span id="initial-display" class="value-badge">25%</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-initial-color">Color de Marca Inicial</label>
+                                <input type="color" id="gauge-initial-color" value="#94a3b8">
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-initial-format">Formato Etiqueta Inicial</label>
+                                <input type="text" id="gauge-initial-format" value="Start {percentage}%">
+                            </div>
+                            <div class="control-group checkbox-group">
+                                <input type="checkbox" id="gauge-initial-show" checked>
+                                <label for="gauge-initial-show" class="inline-label">Visible</label>
+                            </div>
+                        </div>
+
+                        <!-- Fase: Current -->
+                        <div class="phase-column">
+                            <div class="section-divider" style="margin-top: 0;">
+                                <h3>Fase: (Current)</h3>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-value">Progreso Actual (%)</label>
+                                <div class="range-wrapper">
+                                    <input type="range" id="gauge-value" min="0" max="100" value="50">
+                                    <span id="value-display" class="value-badge">50%</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-color">Color de Progreso Actual</label>
+                                <input type="color" id="gauge-color" value="#facc15">
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-format">Formato Etiqueta Dinámica</label>
+                                <input type="text" id="gauge-format" value="Current {percentage}%">
+                            </div>
+                            <div class="control-group checkbox-group">
+                                <input type="checkbox" id="gauge-show" checked>
+                                <label for="gauge-show" class="inline-label">Visible</label>
+                            </div>
+                        </div>
+
+                        <!-- Fase: Target -->
+                        <div class="phase-column">
+                            <div class="section-divider" style="margin-top: 0;">
+                                <h3>Fase: (Target)</h3>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-future">Posición Target (%)</label>
+                                <div class="range-wrapper">
+                                    <input type="range" id="gauge-future" min="0" max="100" value="100">
+                                    <span id="future-display" class="value-badge">100%</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-future-color">Color Completado</label>
+                                <input type="color" id="gauge-future-color" value="#4ade80">
+                            </div>
+                            <div class="control-group">
+                                <label for="gauge-future-format">Formato Etiqueta Final</label>
+                                <input type="text" id="gauge-future-format" value="Target {percentage}%">
+                            </div>
+                            <div class="control-group checkbox-group">
+                                <input type="checkbox" id="gauge-future-show" checked>
+                                <label for="gauge-future-show" class="inline-label">Visible</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider">
+                        <h3>General</h3>
+                    </div>
+
+                    <div class="general-grid">
+                        <div class="control-group">
+                            <label for="gauge-thickness">Altura de la Barra (px)</label>
+                            <div class="range-wrapper">
+                                <input type="number" id="gauge-thickness" min="4" max="40" value="22">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="gauge-width">Ancho de la Barra (%)</label>
+                            <div class="range-wrapper">
+                                <input type="range" id="gauge-width" min="10" max="100" value="50">
+                                <span id="width-display" class="value-badge">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
